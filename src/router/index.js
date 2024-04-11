@@ -17,11 +17,15 @@ const router = createRouter({
       children: [
         {
           path: 'books',
-          component: () => import('../components/BooksInventoryList.vue')
+          component: () => import('../components/BooksList.vue'),
         },
         {
           path: 'addbook',
           component: () => import('../components/AddBookForm.vue')
+        },
+        {
+          path: 'updatebook/:id',
+          component: () => import('../components/UpdateBookForm.vue')
         }
       ]
     },

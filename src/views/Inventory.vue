@@ -21,28 +21,26 @@
         
       </div>
      
+      <div class="col-9"> <!-- Đây là div mới để bọc RouterView -->
         <RouterView />
+      </div>
       
         
     </div>
   </v-container>
-
-
-
 </template>
 
 <script>
-// @ is an alias to /src
-import {RouterView} from 'vue-router'
-
+import { RouterView } from 'vue-router'
 
 export default {
   name: 'Iventory',
   components: {
-    
+    RouterView // Đảm bảo rằng bạn đã đăng ký RouterView component ở đây
   }
 }
 </script>
+
 <style scoped>
 .blue_background {
   background-color: #40A3F3;

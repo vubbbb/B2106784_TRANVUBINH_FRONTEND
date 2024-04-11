@@ -1,7 +1,7 @@
 <template>
     <q-toolbar show-if-above class="navbar bg-grey-3">
         <q-toolbar-title>Sportbook 2VB ADMIN SITE</q-toolbar-title>
-        <q-input borderless v-model="text" input-class="text-left" class="q-ml-md" label="Search ..">
+        <q-input borderless v-model="name" input-class="text-left" class="q-ml-md" label="Search ..">
             <template v-slot:prepend>
                 <q-icon name="search"></q-icon>
             </template>
