@@ -39,7 +39,7 @@ export default {
         deleteBook() {
             axios.delete('http://localhost:3333/api/book/' + this._id)
                 .then(response => {
-                    // Emit an event to inform the parent component about the deletion
+                    location.reload();
                     this.$emit('book-deleted', this._id);
                 })
                 .catch(error => {

@@ -1,8 +1,8 @@
 <template>
     <div class="booklist">
         <div class="row">
-            <div class="bookcard" v-for="book in books" :key="book.id">
-                <BookCard v-bind="book" />
+            <div class="bookcard" v-for="book in books" :key="book.id" >
+                <BookCard v-bind="book"/>
             </div>
         </div>
     </div>
