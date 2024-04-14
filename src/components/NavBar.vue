@@ -1,24 +1,58 @@
 <template>
-    <q-toolbar show-if-above class="navbar bg-grey-3">
-        <q-toolbar-title>Sportbook 2VB ADMIN SITE</q-toolbar-title>
-        <q-input borderless v-model="name" input-class="text-left" class="q-ml-md" label="Search ..">
-            <template v-slot:prepend>
-                <q-icon name="search"></q-icon>
-            </template>
-        </q-input>
-        <q-space></q-space>
-        <q-separator vertical />
-        <q-btn dense round flat icon="far fa-bell" class="q-mx-lg">
-            <q-badge color="green" floating transparent>4</q-badge>
-        </q-btn>
-        <q-separator vertical />
-        <q-avatar class="q-ml-lg">
-            <img src="https://cdn.quasar.dev/img/avatar.png" />
-        </q-avatar>
-    </q-toolbar>
+    <q-layout view="hHh lpR fFf">
+
+        <q-header elevated class="bg-primary text-white" height-hint="98">
+            <q-toolbar>
+                <q-toolbar-title>
+                    <q-avatar>
+                        <img src="https://cdn.quasar.dev/logo-v2/svg/logo-mono-white.svg">
+                    </q-avatar>
+                    Sportbook 2VB Admin Site
+                </q-toolbar-title>
+
+                <q-btn dense flat round icon="menu" @click="toggleRightDrawer" />
+            </q-toolbar>
+
+            <q-tabs align="left">
+                <q-route-tab color="primary" label="Inventory">
+                    <q-menu>
+                        <q-list style="min-width: 100px">
+                            <q-item clickable v-close-popup>
+                                <q-route-tab to="/inventory/books" label="Books" />
+                            </q-item>
+                            <q-item clickable v-close-popup>
+                                <q-route-tab to="/inventory/addbook" label="Add New Book" />
+                            </q-item>
+                        </q-list>
+                    </q-menu>
+                </q-route-tab>
+                <q-route-tab to="/customers" label="Customers" />
+                <q-route-tab to="/page3" label="Page Three" />
+            </q-tabs>
+        </q-header>
+
+
+
+        <q-page-container>
+            <router-view />
+        </q-page-container>
+
+    </q-layout>
 </template>
 
-<style>
+<script>
+import { ref } from 'vue'
 
+export default {
+    setup() {
+        const rightDrawerOpen = ref(false)
 
-</style>
+        return {
+            rightDrawerOpen,
+            toggleRightDrawer() {
+                rightDrawerOpen.value = !rightDrawerOpen.value
+            }
+        }
+    }
+}
+</script>

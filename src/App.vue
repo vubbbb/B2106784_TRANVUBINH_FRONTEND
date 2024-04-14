@@ -6,12 +6,12 @@ import NavBar from '@/components/NavBar.vue'
 
 <template>
   <q-layout view="lHh Lpr lFf">
-    <q-container>
+    <!-- <q-container>
       <SideBar />
-    </q-container>
+    </q-container> -->
     <q-page-container>
       <NavBar class="navbar" />
-      <RouterView />
+      <!-- <RouterView /> -->
     </q-page-container>
   </q-layout>
 </template>

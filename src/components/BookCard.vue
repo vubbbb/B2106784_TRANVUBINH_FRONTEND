@@ -33,8 +33,7 @@ export default {
     },
     methods: {
         updateBook() {
-            router.push('/inventory/updatebook/' + this._id + '?name=' + this.name + '&author=' + this.author + '&cost=' + this.cost + '&quantity=' + this.quantity + '&yearOfPublication=' + this.yearOfPublication + '&image=' + this.image);
-            
+            router.push('/inventory/updatebook/' + this._id + '?name=' + this.name + '&author=' + this.author + '&cost=' + this.cost + '&quantity=' + this.quantity + '&yearOfPublication=' + this.yearOfPublication + '&image=' + this.image); 
         },
         deleteBook() {
             axios.delete('http://localhost:3333/api/book/' + this._id)

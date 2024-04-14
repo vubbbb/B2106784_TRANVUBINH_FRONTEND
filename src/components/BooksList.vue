@@ -40,9 +40,16 @@ export default {
     justify-content: space-between;
 }
 
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
 .book-card {
     flex: 1 0 200px;
     margin: 10px;
     max-width: 300px;
+    
 }
 </style>
