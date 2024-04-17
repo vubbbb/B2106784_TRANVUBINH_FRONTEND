@@ -1,6 +1,5 @@
 <template>
     <q-layout view="hHh lpR fFf">
-
         <q-header elevated class="bg-primary text-white" height-hint="98">
             <q-toolbar>
                 <q-toolbar-title>
@@ -9,10 +8,7 @@
                     </q-avatar>
                     Sportbook 2VB Admin Site
                 </q-toolbar-title>
-
-                <q-btn dense flat round icon="menu" @click="toggleRightDrawer" />
             </q-toolbar>
-
             <q-tabs align="left">
                 <q-route-tab color="primary" label="Inventory">
                     <q-menu>
@@ -27,16 +23,13 @@
                     </q-menu>
                 </q-route-tab>
                 <q-route-tab to="/customers" label="Customers" />
-                <q-route-tab to="/page3" label="Page Three" />
+                <q-route-tab to="/orders" label="Orders" />
+                <q-route-tab to="/page3" label="Report" />
             </q-tabs>
         </q-header>
-
-
-
         <q-page-container>
-            <router-view />
+            <router-view></router-view>
         </q-page-container>
-
     </q-layout>
 </template>
 
@@ -51,7 +44,8 @@ export default {
             rightDrawerOpen,
             toggleRightDrawer() {
                 rightDrawerOpen.value = !rightDrawerOpen.value
-            }
+            },
+            text: ref('')
         }
     }
 }

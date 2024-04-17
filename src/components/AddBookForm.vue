@@ -1,7 +1,7 @@
 <template>
   <div class="add-book-form q-pa-md q-gutter-md">
     <div class="q-gutter-md row justify-center">
-      <h4>Add New Book</h4>
+      <b>Add New Book</b>
       <q-form class="column shadow-2" @submit.prevent="submitForm">
         <q-input outlined name="name" placeholder="Book Title" v-model="book.name"/>
         <q-input outlined name="author" placeholder="Book Author" v-model="book.author"/>

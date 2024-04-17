@@ -1,25 +1,10 @@
 <template>
   <v-container>
     <div class="">
-      <!-- <q-s class="col-3 " style="height: 100%; max-width: 150px;">
-          <q-item>
-            <q-item-section class="text-h5">Inventory</q-item-section>
-          </q-item>
-          <q-separator color="black" inset />
-          <q-item>
-            <q-btn label="BOOKS" color="black" flat class="full-width" to="/inventory/books"></q-btn>
-          </q-item>
-          <q-separator color="black" inset />
-          <q-item>
-            <q-btn label="ADD BOOK" color="black" flat class="full-width" to="/inventory/addbook"></q-btn>
-          </q-item>
-      </q-s>
-      -->
-      <div class="col-9"> <!-- Đây là div mới để bọc RouterView -->
+      <div class="col-9">
+
         <RouterView />
       </div>
-      
-        
     </div>
   </v-container>
 </template>
@@ -39,6 +24,8 @@ export default {
 .blue_background {
   background-color: #40A3F3;
 }
+
+
 
 .my-card:hover {
   background-color: #40A3F3;

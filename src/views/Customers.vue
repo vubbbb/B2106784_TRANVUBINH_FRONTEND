@@ -2,7 +2,7 @@
   <div class="q-pa-md">
     <q-table class="my-sticky-virtscroll-table" virtual-scroll flat bordered v-model:pagination="pagination"
       :rows-per-page-options="[0]" :virtual-scroll-sticky-size-start="48" row-key="index" title="CUSTOMERS" :rows="rows"
-      :columns="columns" style="height: 550px;" />
+      :columns="columns" style="height: fit-content; max-height: 500px;" />
   </div>
 </template>
 
