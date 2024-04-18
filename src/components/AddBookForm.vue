@@ -34,7 +34,12 @@ export default {
   methods: {
     async submitForm() {
       try {
-        const response = await axios.post('http://localhost:3333/api/book/', this.book);
+        const token = localStorage.getItem('token');
+        const response = await axios.post('http://localhost:3333/api/book/', this.book,{
+          headers: {
+            token: `Bearer ${token}`
+          }
+        });
         console.log(response.data);
       } catch (error) {
         console.error(error);

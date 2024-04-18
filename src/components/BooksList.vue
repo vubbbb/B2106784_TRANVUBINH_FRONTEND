@@ -28,7 +28,12 @@ export default {
     },
     async created() {
         try {
-            const response = await axios.get('http://localhost:3333/api/book/');
+            const token = localStorage.getItem('token');
+            const response = await axios.get('http://localhost:3333/api/book/', {
+                headers: {
+                    token: `Bearer ${token}`
+                }
+            });
             this.books = response.data;
             console.log(response.data);
         } catch (error) {

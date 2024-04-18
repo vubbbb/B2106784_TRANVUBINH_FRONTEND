@@ -38,10 +38,14 @@
   <script>
   import { mapActions } from 'vuex'
   import axios from 'axios';
-  
+  import { useToast } from 'vue-toastification';
   
   export default {
     name: 'Login',
+    setup () {
+      const toast = useToast();
+      return { toast }
+    },
     data () {
       return {
         login: {
@@ -54,10 +58,16 @@
     async submitForm() {
       try {
         const response = await axios.post('http://localhost:3333/api/auth/login', this.login);
-        console.log(response.data);
+        localStorage.setItem('token', response.data.accessToken);
+        if (response.status === 200) {
+          this.$router.push('/');
+          toast.success('Login successfully');
+        }
       } catch (error) {
         console.error(error);
       }
+      // localStorage.setItem('token', response.user.accessToken);
+      // console.log(response.data.accessToken);
     }
   },
   }

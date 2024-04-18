@@ -30,7 +30,7 @@ const columns = [
   { name: 'gender', label: 'Gender', field: 'gender' },
   { name: 'address', label: 'Address', field: 'address' },
   { name: 'email', label: 'Email', field: 'email' },
-  { name: 'phoneNumber', label: 'Phone Number', field: 'phoneNumber', sortable: true},
+  { name: 'phoneNumber', label: 'Phone Number', field: 'phoneNumber', sortable: true },
   { name: 'created', label: 'Date of Creation', field: 'created', sortable: true }
 ]
 
@@ -41,8 +41,13 @@ export default {
 
     onMounted(async () => {
       try {
-        const response = await axios.get('http://localhost:3333/api/user/')
-        rows.value = response.data  // Assuming the response is an array of data
+        const token = localStorage.getItem('token');
+        const response = await axios.get('http://localhost:3333/api/user/', {
+          headers: {
+            token: `Bearer ${token}`
+          }
+        });
+        rows.value = response.data 
         console.log(response.data)
       } catch (error) {
         console.error(error)

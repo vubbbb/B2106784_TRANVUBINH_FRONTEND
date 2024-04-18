@@ -33,10 +33,20 @@ export default {
     },
     methods: {
         updateBook() {
-            router.push('/inventory/updatebook/' + this._id + '?name=' + this.name + '&author=' + this.author + '&cost=' + this.cost + '&quantity=' + this.quantity + '&yearOfPublication=' + this.yearOfPublication + '&image=' + this.image); 
+            const token = localStorage.getItem('token');
+            router.push('/inventory/updatebook/' + this._id + '?name=' + this.name + '&author=' + this.author + '&cost=' + this.cost + '&quantity=' + this.quantity + '&yearOfPublication=' + this.yearOfPublication + '&image=' + this.image, {
+                headers: {
+                    token: `Bearer ${token}`
+                }
+            });
         },
         deleteBook() {
-            axios.delete('http://localhost:3333/api/book/' + this._id)
+            const token = localStorage.getItem('token');
+            axios.delete('http://localhost:3333/api/book/' + this._id, {
+                headers: {
+                    token: `Bearer ${token}`
+                }
+            })
                 .then(response => {
                     location.reload();
                     this.$emit('book-deleted', this._id);

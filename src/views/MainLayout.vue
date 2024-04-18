@@ -24,7 +24,6 @@
                 </q-route-tab>
                 <q-route-tab to="/customers" label="Customers" />
                 <q-route-tab to="/orders" label="Orders" />
-                <q-route-tab to="/page3" label="Report" />
             </q-tabs>
         </q-header>
         <q-page-container>
