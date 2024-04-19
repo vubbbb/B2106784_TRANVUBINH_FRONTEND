@@ -39,7 +39,12 @@ export default {
     methods: {
         async submitForm() {
             try {
-                const response = await axios.put('http://localhost:3333/api/book/' + this.$route.params.id, this.book);
+                const token = localStorage.getItem('token');
+                const response = await axios.put('http://localhost:3333/api/book/' + this.$route.params.id, this.book, {
+                    headers: {
+                        token: `Bearer ${token}`
+                    }
+                });
                 console.log(response.data);
             } catch (error) {
                 console.error(error);

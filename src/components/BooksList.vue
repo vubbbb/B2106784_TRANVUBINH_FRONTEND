@@ -7,7 +7,7 @@
         </q-input>
         <div class="row">
             <div class="bookcard" v-for="book in books" :key="book.id">
-                <BookCard v-bind="book" />
+                <BookCard v-bind="book" @book-deleted="handleBookDeleted" />
             </div>
         </div>
     </div>
@@ -23,21 +23,31 @@ export default {
     },
     data() {
         return {
-            books: []
+            books: [],
+            search: ''
         };
     },
     async created() {
-        try {
-            const token = localStorage.getItem('token');
-            const response = await axios.get('http://localhost:3333/api/book/', {
-                headers: {
-                    token: `Bearer ${token}`
-                }
-            });
-            this.books = response.data;
-            console.log(response.data);
-        } catch (error) {
-            console.error(error);
+        await this.fetchBooks();
+    },
+    methods: {
+        async fetchBooks() {
+            try {
+                const token = localStorage.getItem('token');
+                const response = await axios.get('http://localhost:3333/api/book/', {
+                    headers: {
+                        token: `Bearer ${token}`
+                    }
+                });
+                this.books = response.data;
+                console.log(response.data);
+            } catch (error) {
+                console.error(error);
+            }
+        },
+        handleBookDeleted(bookId) {
+            // Remove deleted book from this.books
+            this.books = this.books.filter(book => book.id !== bookId);
         }
     }
 };

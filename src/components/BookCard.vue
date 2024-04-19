@@ -33,12 +33,7 @@ export default {
     },
     methods: {
         updateBook() {
-            const token = localStorage.getItem('token');
-            router.push('/inventory/updatebook/' + this._id + '?name=' + this.name + '&author=' + this.author + '&cost=' + this.cost + '&quantity=' + this.quantity + '&yearOfPublication=' + this.yearOfPublication + '&image=' + this.image, {
-                headers: {
-                    token: `Bearer ${token}`
-                }
-            });
+            router.push('/inventory/updatebook/' + this._id + '?name=' + this.name + '&author=' + this.author + '&cost=' + this.cost + '&quantity=' + this.quantity + '&yearOfPublication=' + this.yearOfPublication + '&image=' + this.image);
         },
         deleteBook() {
             const token = localStorage.getItem('token');
