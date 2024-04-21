@@ -12,6 +12,7 @@ const router = createRouter({
       path: '/',
       name: 'home',
       component: () => import('../views/MainLayout.vue'),
+      meta: { requiresAuth: true },
       children: [
         {
           path: 'inventory',
@@ -47,5 +48,20 @@ const router = createRouter({
 
   ]
 })
+
+router.beforeEach((to, from, next) => {
+  if (to.matched.some(record => record.meta.requiresAuth)) {
+    if (!localStorage.getItem('token')) {
+      next({
+        path: '/login',
+        query: { redirect: to.fullPath }
+      });
+    } else {
+      next(); 
+    }
+  } else {
+    next(); 
+  }
+});
 
 export default router
