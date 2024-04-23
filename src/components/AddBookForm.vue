@@ -9,6 +9,8 @@
         <q-input outlined name="quantity" placeholder="Book Quantity" v-model="book.quantity"/>
         <q-input outlined name="yearOfPublication" placeholder="Book Publication Year" v-model="book.yearOfPublication"/>
         <q-input outlined name="image" placeholder="Book Cover" v-model="book.image"/>
+        <!-- Dropdown or list of publishers -->
+        <q-select outlined name="publisher" placeholder="Select Publisher" v-model="book.publisher" :options="publishers" />
         <q-btn type="submit" label="Add Book" color="primary" class="q-mt-md"/>
       </q-form>
     </div>
@@ -27,11 +29,34 @@ export default {
         cost: '',
         quantity: '',
         yearOfPublication: '',
-        image: ''
-      }
+        image: '',
+        publisher: '' // Add publisher field
+      },
+      publishers: [] // Array to hold publishers options
     };
   },
+  created() {
+    // Fetch publishers data from API
+    this.fetchPublishers();
+  },
   methods: {
+    async fetchPublishers() {
+      try {
+        const token = localStorage.getItem('token');
+        const response = await axios.get('http://localhost:3333/api/publisher', {
+          headers: {
+            token: `Bearer ${token}`
+          }
+        });
+        // Set publishers options
+        this.publishers = response.data.map(publisher => ({
+          label: publisher.name,
+          value: publisher._id
+        }));
+      } catch (error) {
+        console.error(error);
+      }
+    },
     async submitForm() {
       try {
         const token = localStorage.getItem('token');
@@ -39,8 +64,9 @@ export default {
           headers: {
             token: `Bearer ${token}`
           }
-        });
-        console.log(response.data);
+        }).then(() => {
+          this.$router.push({ name: 'books' });
+        })
       } catch (error) {
         console.error(error);
       }

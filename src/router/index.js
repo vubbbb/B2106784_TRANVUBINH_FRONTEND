@@ -21,6 +21,7 @@ const router = createRouter({
           children: [
             {
               path: 'books',
+              name: 'books',
               component: () => import('../components/BooksList.vue'),
             },
             {
@@ -47,6 +48,19 @@ const router = createRouter({
           path: 'customers',
           name: 'customers',
           component: () => import('../views/Customers.vue')
+        },
+        {
+          path: 'publishers',
+          name: 'publishers',
+          component: () => import('../views/Publishers.vue'),
+        },
+        {
+          path: 'publishers/addform',
+          component: () => import('../components/AddPublisherForm.vue')
+        },
+        {
+          path: 'publishers/update/:id',
+          component: () => import('../components/UpdatePublisherForm.vue')
         }
       ]
     }

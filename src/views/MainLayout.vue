@@ -22,7 +22,18 @@
                         </q-list>
                     </q-menu>
                 </q-route-tab>
-                <q-route-tab to="/publishers" label="Publishers" />
+                <q-route-tab color="primary" label="Publishers">
+                    <q-menu>
+                        <q-list style="min-width: 100px">
+                            <q-item clickable v-close-popup>
+                                <q-route-tab to="/publishers" label="Publishers List" />
+                            </q-item>
+                            <q-item clickable v-close-popup>
+                                <q-route-tab to="/publishers/addform" label="Add New Publisher" />
+                            </q-item>
+                        </q-list>
+                    </q-menu>
+                </q-route-tab>
                 <q-route-tab to="/customers" label="Customers" />
                 <q-route-tab to="/requests" label="Requests" />
                 <q-route-tab to="/orders" label="Orders" />

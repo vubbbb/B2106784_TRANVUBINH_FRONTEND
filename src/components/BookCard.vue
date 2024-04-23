@@ -5,6 +5,8 @@
             <q-card-section>
                 <div class="text-h6">{{ name }}</div>
                 <div class="text-subtitle-2">Tác giả: {{ author }}</div>
+                <!-- Change this line to display only the label of the publisher -->
+                <div class="text-subtitle-2">NXB: {{ publisher.label }}</div>
                 <div class="text-subtitle-2">Giá: {{ cost }}đ</div>
                 <div class="text-subtitle-2">Số Lượng: {{ quantity }}</div>
                 <div class="text-subtitle-2">YoP: {{ yearOfPublication }}</div>
@@ -29,11 +31,13 @@ export default {
         quantity: Number,
         yearOfPublication: Number,
         // Add image prop
-        image: String
+        image: String,
+        publisher: Object, // Change type to Object to access label property
     },
     methods: {
         updateBook() {
-            router.push('/inventory/updatebook/' + this._id + '?name=' + this.name + '&author=' + this.author + '&cost=' + this.cost + '&quantity=' + this.quantity + '&yearOfPublication=' + this.yearOfPublication + '&image=' + this.image);
+            // console.log(this.publisher);
+            router.push('/inventory/updatebook/' + this._id + '?name=' + this.name + '&author=' + this.author + '&cost=' + this.cost + '&quantity=' + this.quantity + '&yearOfPublication=' + this.yearOfPublication + '&image=' + this.image + '&publisher=' + this.publisher.label);
         },
         deleteBook() {
             const token = localStorage.getItem('token');
@@ -44,7 +48,6 @@ export default {
             })
                 .then(response => {
                     location.reload();
-                    this.$emit('book-deleted', this._id);
                 })
                 .catch(error => {
                     // Handle error
