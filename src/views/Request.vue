@@ -1,13 +1,13 @@
 <template>
   <div class="q-pa-md">
-    <q-table title="Requests" :rows="filteredOrders" :columns="columns" row-key="name" :filter="filter" grid
-      hide-header>
+    <q-table title="Yêu cầu mượn sách từ đọc giả" :rows="filteredOrders" :columns="columns" row-key="name"
+      :filter="filter" grid hide-header>
       <template v-slot:item="props">
         <div class="q-pa-xs col-xs-12 col-sm-6 col-md-4 col-lg-3 grid-style-transition">
           <q-card bordered flat>
             <q-card-section>
-              <q-btn label="Approve" color="primary" @click="approveOrder(props.row._id)" />
-              <q-btn label="Reject" color="negative" @click="rejectOrder(props.row._id)" class="q-ml-md" />
+              <q-btn label="Chấp nhận" color="primary" @click="approveOrder(props.row._id)" />
+              <q-btn label="Từ chối" color="negative" @click="rejectOrder(props.row._id)" class="q-ml-md" />
               <h6>{{ props.row.userName }}</h6>
             </q-card-section>
             <q-separator />
@@ -40,6 +40,11 @@ const columns = [
   },
   {
     name: 'userId',
+    label: 'Order ID',
+    field: '_id'
+  },
+  {
+    name: 'userId',
     label: 'User ID',
     field: 'userId'
   },
@@ -50,32 +55,32 @@ const columns = [
   },
   {
     name: 'bookName',
-    label: 'Book Name',
+    label: 'Bìa sách',
     field: 'bookName'
   },
   {
     name: 'address',
-    label: 'Address',
+    label: 'Địa chỉ',
     field: 'address'
   },
   {
     name: 'status',
-    label: 'Status',
+    label: 'Trạng thái đơn mượn',
     field: 'status'
   },
   {
     name: 'quantity',
-    label: 'Quantity',
+    label: 'Số lượng',
     field: 'quantity'
   },
   {
     name: 'startDate',
-    label: 'Start Date',
+    label: 'Ngày mượn',
     field: 'startDate'
   },
   {
     name: 'endDate',
-    label: 'End Date',
+    label: 'Yêu cầu trả sách trước ngày',
     field: 'endDate'
   },
 ]

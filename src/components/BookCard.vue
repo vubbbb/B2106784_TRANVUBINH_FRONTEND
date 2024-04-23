@@ -11,8 +11,8 @@
                 <div class="text-subtitle-2">Số Lượng: {{ quantity }}</div>
                 <div class="text-subtitle-2">YoP: {{ yearOfPublication }}</div>
                 <div class="row justify-center q-mt-md">
-                    <q-btn label="Edit" color="primary" @click="updateBook" />
-                    <q-btn label="Delete" color="negative" @click="deleteBook" class="q-ml-md" />
+                    <q-btn label="Cập nhật" color="primary" @click="updateBook" />
+                    <q-btn label="Xóa" color="negative" @click="deleteBook" class="q-ml-md" />
                 </div>
             </q-card-section>
         </div>

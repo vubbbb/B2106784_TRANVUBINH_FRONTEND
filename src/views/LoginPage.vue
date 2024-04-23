@@ -1,5 +1,5 @@
 <template>
-    <img src="../assets/img0.jpg" class="wave" alt="login-wave">
+    <img src="../assets/loginbackground.jpg" class="wave" alt="login-wave">
     <div class="row" style="height: 90vh">
       <div class="col-0 col-md-6 flex justify-center content-center">
         <img src="../assets/logologin.png" class="responsive" alt="login-image">
@@ -15,7 +15,7 @@
           <q-card-section>
             <div class="q-pt-lg">
               <div class="col text-h6 ellipsis flex justify-center">
-                <h2 class="text-h2 text-uppercase q-my-none text-weight-regular">Login</h2>
+                <h2 class="text-h4 text-uppercase q-my-none text-weight-regular">Admin site</h2>
               </div>
             </div>
           </q-card-section>
@@ -26,7 +26,7 @@
               <q-input label="Password" type="password" v-model="login.password">
               </q-input>
               <div>
-                <q-btn class="full-width" color="primary" label="Login" type="submit" rounded></q-btn>
+                <q-btn class="full-width" color="primary" label="Đăng nhập" type="submit" rounded></q-btn>
               </div>
             </q-form>
           </q-card-section>
@@ -60,7 +60,7 @@
         const response = await axios.post('http://localhost:3333/api/auth/login', this.login);
         localStorage.setItem('token', response.data.accessToken);
         if (response.status === 200) {
-          this.$router.push('/');
+          this.$router.push('/requests');
           toast.success('Login successfully');
         }
       } catch (error) {

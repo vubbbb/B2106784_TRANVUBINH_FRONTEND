@@ -1,13 +1,15 @@
 <template>
-    <q-card class="my-card q-ma-sm my-box cursor-pointer q-hoverable" v-ripple style="width: 400px; height: 250px;">
-        <div class="row justify-center full-height full-width text-center">
-            <img :src="image" class="q-mt-sm" fit="contain" style="max-width: 170px; height: 200px;">
-            <q-card-section>
+    <q-card class="my-card q-ma-sm my-box cursor-pointer q-hoverable" v-ripple style="width: 400px; height: 350px;">
+        <div class="full-height full-width card">
+            <div class="row justify-center">
+                <img :src="image" class="q-mt-sm" fit="contain" style="max-width: 170px; height: 200px;">
+            </div>
+            <q-card-section class="full-width">
                 <div class="text-h6">{{ name }}</div>
                 <div class="text-subtitle-2">Địa chỉ: {{ address }}</div>
                 <div class="row justify-center q-mt-md">
-                    <q-btn label="Edit" color="primary" @click="updatePublisher" />
-                    <q-btn label="Delete" color="negative" @click="deletePublisher" class="q-ml-md" />
+                    <q-btn label="Cập nhật" color="primary" @click="updatePublisher" />
+                    <q-btn label="Xóa" color="negative" @click="deletePublisher" class="q-ml-md" />
                 </div>
             </q-card-section>
         </div>
@@ -51,3 +53,24 @@ export default {
     }
 };
 </script>
+
+<style scoped>
+.full-height {
+    height: 100%;
+}
+
+.full-width {
+    width: 100%;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.row {
+    display: flex;
+    justify-content: center;
+}
+</style>

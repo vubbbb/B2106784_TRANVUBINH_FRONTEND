@@ -1,21 +1,21 @@
 <template>
     <div class="add-book-form q-pa-md q-gutter-md">
         <div class="q-gutter-md row justify-center">
-            <b>Add New Book</b>
+            <b>Cập nhật đầu sách</b>
             <q-form class="column shadow-2" @submit.prevent="submitForm">
-                <q-input outlined name="name" placeholder="Book Title" v-model="book.name" />
-                <q-input outlined name="author" placeholder="Book Author" v-model="book.author" />
-                <q-input outlined name="cost" placeholder="Book Price" v-model="book.cost" />
-                <q-input outlined name="quantity" placeholder="Book Quantity" v-model="book.quantity" />
-                <q-input outlined name="yearOfPublication" placeholder="Book Publication Year"
+                <q-input outlined name="name" placeholder="Tựa đề" v-model="book.name" />
+                <q-input outlined name="author" placeholder="Tác giả" v-model="book.author" />
+                <q-input outlined name="cost" placeholder="Giá thuê" v-model="book.cost" />
+                <q-input outlined name="quantity" placeholder="Số lượng bản" v-model="book.quantity" />
+                <q-input outlined name="yearOfPublication" placeholder="Năm xuất bản"
                     v-model="book.yearOfPublication" />
-                <q-input outlined name="image" placeholder="Book Cover" v-model="book.image" />
+                <q-input outlined name="image" placeholder="Ảnh bìa" v-model="book.image" />
 
                 <!-- Dropdown for selecting publisher -->
                 <q-select outlined name="publisher" placeholder="Select Publisher" v-model="book.publisher"
                     :options="publishers" />
 
-                <q-btn type="submit" label="Update Book" color="primary" class="q-mt-md" />
+                <q-btn type="submit" label="Cập nhật" color="primary" class="q-mt-md" />
             </q-form>
         </div>
     </div>

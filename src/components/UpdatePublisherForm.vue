@@ -1,9 +1,9 @@
 <template>
     <q-form class="column q-pa-md shadow-2" @submit.prevent="submitForm">
-        <q-input outlined name="name" placeholder="Publisher Name" v-model="publisher.name"/>
-        <q-input outlined name="address" placeholder="Publisher Address" v-model="publisher.address"/>
-        <q-input outlined name="image" placeholder="Publisher Logo" v-model="publisher.image"/>
-        <q-btn type="submit" label="Update Publisher" color="primary" class="q-mt-md"/>
+        <q-input outlined name="name" placeholder="Tên nhà xuất bản" v-model="publisher.name"/>
+        <q-input outlined name="address" placeholder="Địa chỉ" v-model="publisher.address"/>
+        <q-input outlined name="image" placeholder="Ảnh bìa" v-model="publisher.image"/>
+        <q-btn type="submit" label="Cập nhật" color="primary" class="q-mt-md"/>
     </q-form>
 </template>
 

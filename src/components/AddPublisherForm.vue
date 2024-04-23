@@ -1,12 +1,12 @@
 <template>
     <div class="add-publisher-form q-pa-md q-gutter-md">
       <div class="q-gutter-md row justify-center">
-        <b>Add New Publisher</b>
+        <b>Thêm mới nhà xuất bản</b>
         <q-form class="column shadow-2" @submit.prevent="submitForm">
-          <q-input outlined name="name" placeholder="Publisher Name" v-model="publisher.name"/>
-          <q-input outlined name="address" placeholder="Publisher Address" v-model="publisher.address"/>
-          <q-input outlined name="image" placeholder="Publisher Logo" v-model="publisher.image"/>
-          <q-btn type="submit" label="Add Publisher" color="primary" class="q-mt-md"/>
+          <q-input outlined name="name" placeholder="Tên nhà xuất bản" v-model="publisher.name"/>
+          <q-input outlined name="address" placeholder="Địa chỉ" v-model="publisher.address"/>
+          <q-input outlined name="image" placeholder="Ảnh bìa" v-model="publisher.image"/>
+          <q-btn type="submit" label="Thêm nhà xuất bản" color="primary" class="q-mt-md"/>
         </q-form>
       </div>
     </div>
@@ -33,6 +33,8 @@
             headers: {
               token: `Bearer ${token}`
             }
+          }).then(() => {
+            this.$router.push({ name: 'publishers' });
           });
           console.log(response.data);
         } catch (error) {

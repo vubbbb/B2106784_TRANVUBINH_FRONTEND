@@ -1,6 +1,7 @@
 <template>
     <div class="booklist">
-        <q-input class="search" v-model="search" filled type="search" input-class="text-right">
+        <q-input class="search" v-model="search" filled type="search" aria-placeholder="Nhập để tìm kiếm sách"
+            input-class="text-right" @keypress.enter="searchBooks">
             <template v-slot:append>
                 <q-icon name="search" />
             </template>
@@ -49,8 +50,15 @@ export default {
             // Remove deleted book from this.books
             this.books = this.books.filter(book => book.id !== bookId);
         }
+        ,
+        searchBooks() {
+            if (this.search.trim() !== '') {
+                // Navigate to search results page with search query
+                this.$router.push('/search?q=' + this.search.trim())
+            }
+        }
     }
-};
+    };
 </script>
 
 <style scoped>
@@ -63,7 +71,7 @@ export default {
 .row {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    /* justify-content: center; */
 }
 
 .search {

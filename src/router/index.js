@@ -61,6 +61,11 @@ const router = createRouter({
         {
           path: 'publishers/update/:id',
           component: () => import('../components/UpdatePublisherForm.vue')
+        },
+        {
+          path: 'search',
+          name: 'search',
+          component: () => import('../components/SearchPage.vue')
         }
       ]
     }
