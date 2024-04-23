@@ -1,6 +1,7 @@
 <template>
   <div class="q-pa-md">
-    <q-table title="Orders" :rows="rows" :columns="columns" row-key="name" :filter="filter" grid hide-header>
+    <q-table title="Requests" :rows="filteredOrders" :columns="columns" row-key="name" :filter="filter" grid
+      hide-header>
       <template v-slot:item="props">
         <div class="q-pa-xs col-xs-12 col-sm-6 col-md-4 col-lg-3 grid-style-transition">
           <q-card bordered flat>
@@ -77,17 +78,13 @@ const columns = [
     label: 'End Date',
     field: 'endDate'
   },
-  {
-    name: 'actions',
-    label: 'Actions',
-    field: 'actions'
-  }
 ]
 
 export default {
 
   setup() {
     const rows = ref([]);
+    const filteredOrders = ref([]);
     onMounted(async () => {
       try {
         const token = localStorage.getItem('token');
@@ -99,7 +96,11 @@ export default {
         rows.value = response.data.map((order, index) => ({
           ...order,
           index: index + 1
-        }))
+        }));
+        filteredOrders.value = rows.value.filter(order => order.status === 'pending');
+
+        // Sắp xếp lại mảng theo index giảm dần
+        filteredOrders.value.sort((a, b) => b.index - a.index);
       } catch (error) {
         console.error(error)
       }
@@ -108,7 +109,7 @@ export default {
     return {
       filter: ref(''),
       columns,
-      rows
+      filteredOrders
     }
   },
   methods: {
@@ -150,27 +151,5 @@ export default {
 
 
 <style lang="sass">
-.my-sticky-virtscroll-table
 
-  height: 410px
-
-  .q-table__top,
-  .q-table__bottom,
-  thead tr:first-child th /* bg color is important for th; just specify one */
-    background-color: #00b4ff
-
-  thead tr th
-    position: sticky
-    z-index: 1
-  /* this will be the loading indicator */
-  thead tr:last-child th
-    /* height of all previous header rows */
-    top: 48px
-  thead tr:first-child th
-    top: 0
-
-  /* prevent scrolling behind sticky top row on focus */
-  tbody
-    /* height of all previous header rows */
-    scroll-margin-top: 48px
 </style>

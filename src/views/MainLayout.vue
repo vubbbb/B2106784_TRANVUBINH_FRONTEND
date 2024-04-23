@@ -22,7 +22,9 @@
                         </q-list>
                     </q-menu>
                 </q-route-tab>
+                <q-route-tab to="/publishers" label="Publishers" />
                 <q-route-tab to="/customers" label="Customers" />
+                <q-route-tab to="/requests" label="Requests" />
                 <q-route-tab to="/orders" label="Orders" />
             </q-tabs>
         </q-header>
